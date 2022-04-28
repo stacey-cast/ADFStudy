@@ -1,0 +1,52 @@
+{
+	"name": "asqldb_StaceyTestADB",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQLCastillo01 Azure SQL Server",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Chaper 3"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "RowId",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Retailer",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesMonth",
+				"type": "date"
+			},
+			{
+				"name": "Product",
+				"type": "nvarchar"
+			},
+			{
+				"name": "ManufacturerProductCode",
+				"type": "nvarchar"
+			},
+			{
+				"name": "SalesValueUSD",
+				"type": "decimal",
+				"precision": 18,
+				"scale": 2
+			},
+			{
+				"name": "UnitsSold",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Sales_LOAD"
+		}
+	}
+}
