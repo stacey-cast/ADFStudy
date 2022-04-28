@@ -1,0 +1,9 @@
+{
+	"name": "adf-byexamplecastillo",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e731500a-8f4f-405c-873f-bd47946f35ca",
+		"tenantId": "63bd95c0-629c-44c1-af7d-7b41bc7d17a3"
+	}
+}
