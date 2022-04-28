@@ -1,5 +1,5 @@
 {
-	"name": "ds_asqldb_StaceyTestADB",
+	"name": "ASQL_dboSalesLoad",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SQLCastillo01 Azure SQL Server",
