@@ -1,5 +1,5 @@
 {
-	"name": "asqldb_StaceyTestADB",
+	"name": "ds_asqldb_StaceyTestADB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SQLCastillo01 Azure SQL Server",
