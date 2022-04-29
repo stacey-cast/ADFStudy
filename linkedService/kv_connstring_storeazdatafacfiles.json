@@ -1,0 +1,11 @@
+{
+	"name": "kv_connstring_storeazdatafacfiles",
+	"properties": {
+		"description": "Connect to key vault for storeazdatafacfiles blob storage",
+		"annotations": [],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "https://kv-adfbestorageacct.vault.azure.net/"
+		}
+	}
+}
