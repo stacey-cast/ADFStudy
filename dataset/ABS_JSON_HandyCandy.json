@@ -1,0 +1,50 @@
+{
+	"name": "ABS_JSON_HandyCandy",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "sa_storeazdatafacfiles",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Chaper 3"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "00816cd4-0d98-4505-8b8f-8b3ba08aab31.json",
+				"folderPath": "azure-data-factory-by-example-main/SampleData/HandyCandy",
+				"container": "sampledata"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"TransactionId": {
+					"type": "string"
+				},
+				"TransactionDate": {
+					"type": "string"
+				},
+				"StoreId": {
+					"type": "string"
+				},
+				"Items": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"Product": {
+								"type": "string"
+							},
+							"Price": {
+								"type": "number"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
