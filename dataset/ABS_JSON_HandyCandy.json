@@ -13,7 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "00816cd4-0d98-4505-8b8f-8b3ba08aab31.json",
+				"fileName": "0090e64c-25cf-414a-a922-10bc10a7cbe9.json",
 				"folderPath": "azure-data-factory-by-example-main/SampleData/HandyCandy",
 				"container": "sampledata"
 			}
