@@ -1,7 +1,7 @@
 {
 	"name": "adfbyexamplekv24",
 	"properties": {
-		"description": "Connection to key vault adfbyeamplekv24",
+		"description": "Connection to key vault adfbyeamplekv24'",
 		"annotations": [],
 		"type": "AzureKeyVault",
 		"typeProperties": {
