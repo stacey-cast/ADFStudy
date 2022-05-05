@@ -226,7 +226,7 @@
 			"WildcardFolderPath": {
 				"type": "string"
 			},
-			"WildcardFolderName": {
+			"WildcardFileName": {
 				"type": "string",
 				"defaultValue": "*.csv"
 			}
