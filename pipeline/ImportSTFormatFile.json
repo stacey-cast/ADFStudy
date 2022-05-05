@@ -1,5 +1,5 @@
 {
-	"name": "ImportSTFormatFolder_copy1",
+	"name": "ImportSTFormatFile",
 	"properties": {
 		"description": "Import csv files to SQL table",
 		"activities": [
@@ -41,14 +41,6 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": {
-								"value": "@pipeline().parameters.WildcardFolderPath",
-								"type": "Expression"
-							},
-							"wildcardFileName": {
-								"value": "@pipeline().parameters.WildcardFileName",
-								"type": "Expression"
-							},
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -223,12 +215,11 @@
 			}
 		],
 		"parameters": {
-			"WildcardFolderPath": {
+			"Directory": {
 				"type": "string"
 			},
-			"WildcardFileName": {
-				"type": "string",
-				"defaultValue": "*.csv"
+			"File": {
+				"type": "string"
 			}
 		},
 		"variables": {
