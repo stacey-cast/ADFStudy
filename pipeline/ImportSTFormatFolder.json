@@ -46,7 +46,7 @@
 								"type": "Expression"
 							},
 							"wildcardFileName": {
-								"value": "@pipeline().parameters.WildcardFolderName",
+								"value": "@pipeline().parameters.WildcardFileName",
 								"type": "Expression"
 							},
 							"enablePartitionDiscovery": false
