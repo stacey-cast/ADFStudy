@@ -41,14 +41,6 @@
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
 							"recursive": true,
-							"wildcardFolderPath": {
-								"value": "@pipeline().parameters.WildcardFolderPath",
-								"type": "Expression"
-							},
-							"wildcardFileName": {
-								"value": "@pipeline().parameters.WildcardFileName",
-								"type": "Expression"
-							},
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
@@ -77,13 +69,16 @@
 						"referenceName": "ABS_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container": "sampledata",
+							"Container": {
+								"value": "@pipeline().parameters.Container",
+								"type": "Expression"
+							},
 							"Directory": {
-								"value": "@pipeline().parameters.WildcardFolderPath",
+								"value": "@pipeline().parameters.Directory",
 								"type": "Expression"
 							},
 							"File": {
-								"value": "@pipeline().parameters.WildcardFileName",
+								"value": "@pipeline().parameters.File",
 								"type": "Expression"
 							},
 							"LinkedServiceConnectionSecret": "StorageAccountConnectionString"
@@ -235,12 +230,14 @@
 			}
 		],
 		"parameters": {
-			"WildcardFolderPath": {
+			"Directory": {
 				"type": "string"
 			},
-			"WildcardFileName": {
-				"type": "string",
-				"defaultValue": "*.csv"
+			"File": {
+				"type": "string"
+			},
+			"Container": {
+				"type": "string"
 			}
 		},
 		"variables": {
