@@ -1,5 +1,5 @@
 {
-	"name": "ImportSTFormatFile64",
+	"name": "ImportSTFormatFormal_Divert",
 	"properties": {
 		"description": "Import csv files to SQL table",
 		"activities": [
