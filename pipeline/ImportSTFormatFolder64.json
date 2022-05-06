@@ -69,18 +69,9 @@
 						"referenceName": "ABS_CSV",
 						"type": "DatasetReference",
 						"parameters": {
-							"Container": {
-								"value": "@pipeline().parameters.Container",
-								"type": "Expression"
-							},
-							"Directory": {
-								"value": "@pipeline().parameters.Directory",
-								"type": "Expression"
-							},
-							"File": {
-								"value": "@pipeline().parameters.File",
-								"type": "Expression"
-							},
+							"Container": "sampledata",
+							"Directory": "azure-data-factory-by-example-main/SampleData/NaughtyButNice",
+							"File": "NBN-202006.csv",
 							"LinkedServiceConnectionSecret": "StorageAccountConnectionString"
 						}
 					}
@@ -93,7 +84,7 @@
 				]
 			},
 			{
-				"name": "EXEC LogPipelineExecution",
+				"name": "Log Pipeline outcome",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -227,17 +218,88 @@
 						"type": "Expression"
 					}
 				}
+			},
+			{
+				"name": "Log Pipeline Failure",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Import Sales Data",
+						"dependencyConditions": [
+							"Failed"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[LogPipelineEnd]",
+					"storedProcedureParameters": {
+						"FilesRead": {
+							"value": {
+								"value": "@activity('Import Sales Data').output.filesRead",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RowsCopied": {
+							"value": {
+								"value": "@activity('Import Sales Data').output.rowsCopied",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RowsRead": {
+							"value": {
+								"value": "@activity('Import Sales Data').output.rowsRead",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RunEndDateTime": {
+							"value": {
+								"value": "@utcnow()",
+								"type": "Expression"
+							},
+							"type": "DateTime"
+						},
+						"RunSeqNo": {
+							"value": {
+								"value": "@variables('RunSeqNo')",
+								"type": "Expression"
+							},
+							"type": "Int32"
+						},
+						"RunStatus": {
+							"value": "Failed",
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "SQLCastillo01 Azure SQL Server",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"parameters": {
 			"Directory": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "azure-data-factory-by-example-main/SampleData/NaughtyButNice/"
 			},
 			"File": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "NBN-202006.csv"
 			},
 			"Container": {
-				"type": "string"
+				"type": "string",
+				"defaultValue": "sampledata"
 			}
 		},
 		"variables": {
