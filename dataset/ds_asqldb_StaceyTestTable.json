@@ -1,0 +1,25 @@
+{
+	"name": "ds_asqldb_StaceyTestTable",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SQLCastillo01 Azure SQL Server",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"TableName": {
+				"type": "string",
+				"defaultValue": "LoadingError"
+			}
+		},
+		"folder": {
+			"name": "Chapter 6"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LoadingError"
+		}
+	}
+}

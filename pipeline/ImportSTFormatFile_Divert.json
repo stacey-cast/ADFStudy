@@ -1,5 +1,5 @@
 {
-	"name": "ImportSTFormatFormal_Divert",
+	"name": "ImportSTFormatFile_Divert",
 	"properties": {
 		"description": "Import csv files to SQL table",
 		"activities": [
@@ -55,6 +55,21 @@
 						"disableMetricsCollection": false
 					},
 					"enableStaging": false,
+					"enableSkipIncompatibleRow": true,
+					"logSettings": {
+						"enableCopyActivityLog": true,
+						"copyActivityLogSettings": {
+							"logLevel": "Warning",
+							"enableReliableLogging": false
+						},
+						"logLocationSettings": {
+							"linkedServiceName": {
+								"referenceName": "sa_storeazdatafacfiles",
+								"type": "LinkedServiceReference"
+							},
+							"path": "output/errors"
+						}
+					},
 					"translator": {
 						"type": "TabularTranslator",
 						"typeConversion": true,
