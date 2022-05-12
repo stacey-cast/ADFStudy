@@ -349,7 +349,20 @@
 										"type": "DelimitedTextReadSettings"
 									}
 								},
-								"enableStaging": false
+								"sink": {
+									"type": "AzureSqlSink",
+									"writeBehavior": "insert",
+									"sqlWriterUseTableLock": false
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"typeConversion": true,
+									"typeConversionSettings": {
+										"allowDataTruncation": true,
+										"treatBooleanAsNumber": false
+									}
+								}
 							},
 							"inputs": [
 								{
@@ -359,6 +372,16 @@
 										"Container": "output",
 										"Directory": ".",
 										"File": "."
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "table_StaceyTestADB",
+									"type": "DatasetReference",
+									"parameters": {
+										"TableName": "LoadingError",
+										"Schema": "dbo"
 									}
 								}
 							]
