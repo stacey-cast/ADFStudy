@@ -338,6 +338,10 @@
 									"storeSettings": {
 										"type": "AzureBlobStorageReadSettings",
 										"recursive": true,
+										"wildcardFolderPath": {
+											"value": "@activity('Import Sales Data').output.logFilePath",
+											"type": "Expression"
+										},
 										"wildcardFileName": "*",
 										"enablePartitionDiscovery": false
 									},
