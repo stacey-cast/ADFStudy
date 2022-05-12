@@ -103,7 +103,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Import Sales Data",
+						"activity": "If rows skipped",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -300,6 +300,66 @@
 				"linkedServiceName": {
 					"referenceName": "SQLCastillo01 Azure SQL Server",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "If rows skipped",
+				"type": "IfCondition",
+				"dependsOn": [
+					{
+						"activity": "Import Sales Data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"expression": {
+						"value": "@greater(activity('Import Sales Data').output.rowsSkipped,0)",
+						"type": "Expression"
+					},
+					"ifTrueActivities": [
+						{
+							"name": "Copy data1",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "DelimitedTextSource",
+									"storeSettings": {
+										"type": "AzureBlobStorageReadSettings",
+										"recursive": true,
+										"wildcardFileName": "*",
+										"enablePartitionDiscovery": false
+									},
+									"formatSettings": {
+										"type": "DelimitedTextReadSettings"
+									}
+								},
+								"enableStaging": false
+							},
+							"inputs": [
+								{
+									"referenceName": "ABS_CSV",
+									"type": "DatasetReference",
+									"parameters": {
+										"Container": "output",
+										"Directory": ".",
+										"File": "."
+									}
+								}
+							]
+						}
+					]
 				}
 			}
 		],
