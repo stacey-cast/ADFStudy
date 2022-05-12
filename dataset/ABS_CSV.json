@@ -5,10 +5,7 @@
 			"referenceName": "AnyBlobStorage",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"ConnectionSecret": {
-					"value": "@dataset().LinkedServiceConnectionSecret",
-					"type": "Expression"
-				}
+				"ConnectionSecret": "StorageAccountConnectionString"
 			}
 		},
 		"parameters": {
